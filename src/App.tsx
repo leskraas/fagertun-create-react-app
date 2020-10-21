@@ -4,9 +4,10 @@ import styled from "styled-components";
 import {BrowserRouter, Route} from 'react-router-dom';
 import {AllUserGuide} from "./components/AllUserGuide";
 import {OneUserGuide} from "./components/OneUserGuide";
-import {NavHeight} from "./utils/dimentions";
+import {MainMargin, NavHeight} from "./utils/dimentions";
 import {createMuiTheme, responsiveFontSizes, ThemeProvider} from "@material-ui/core";
 import {colors} from "./utils/colors";
+import {ImageGallery} from "./components/ImageGallery";
 
 let theme = createMuiTheme(
     {
@@ -34,6 +35,7 @@ function App() {
                     <Route path={'/'} exact component={() => <div>hei</div>}/>
                     <Route path={'/brukermanual/'} exact component={AllUserGuide}/>
                     <Route path={'/brukermanual/:slug'} component={OneUserGuide}/>
+                    <Route path={'/bildegalleri/'} component={ImageGallery}/>
                 </Content>
             </ThemeProvider>
         </BrowserRouter>
@@ -43,7 +45,7 @@ function App() {
 const Content = styled.div`
   position: relative;
   top: 0;
-  margin-bottom: ${NavHeight};
+  margin: ${MainMargin} ${MainMargin} calc(${MainMargin} + ${NavHeight});
   min-height: calc(100vh - ${NavHeight});
 `
 

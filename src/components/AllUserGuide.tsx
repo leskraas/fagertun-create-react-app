@@ -30,7 +30,7 @@ export const AllUserGuide: React.FC = () => {
 
     }, [])
     return (
-        <UserGuidWrapper>
+        <>
             <Typography gutterBottom variant="h2" component="h1">
                 Brukermanualer
             </Typography>
@@ -48,13 +48,10 @@ export const AllUserGuide: React.FC = () => {
                             </Grid>
                     )}
                 </StyledGrid>
-        </UserGuidWrapper>
+        </>
     );
 };
 
-const UserGuidWrapper = styled.div`
-    padding: 2rem;
-`;
 
 const StyledGrid = styled(Grid)`
   //align-content: center;

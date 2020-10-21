@@ -4,7 +4,7 @@
 export const colorDefinitions = {
     linearGradeBlue: 'linear-gradient(#3EB9DE, #3A80DE)',
     shadowBlue: 'rgba(74,116,161,0.29)',
-
+    grey900Transparent: 'rgba(34,34,34, .2)',
 
     // Grey
     grey100: '#fbfbfb',
@@ -61,6 +61,7 @@ export const colorAliases = {
     lightGrey: colorDefinitions.grey200,
     coreGray: colorDefinitions.grey300,
     iconCore: colorDefinitions.blue300,
+    shadowCore: colorDefinitions.grey900Transparent,
     navbarBackground: '#fff',
     iconSecondary: colorDefinitions.grey700,
     darkGrey: colorDefinitions.grey400,

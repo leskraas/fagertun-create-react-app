@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {NavHeight} from "../../utils/dimentions";
 import {colors} from "../../utils/colors";
 import {Logo} from "../../images/Logo";
@@ -9,24 +9,22 @@ import {AssignmentRounded, PhotoLibraryRounded} from "@material-ui/icons";
 
 export const Navbar: React.FC = () => {
     return (
-        <>
-            <NavbarContainer>
-                <LogoContainer to={'/'}>
-                    <Logo/>
-                </LogoContainer>
-                <Menu>
-                    <MenuItem to={'/brukermanual/'}>
-                        <StyledIconButton aria-label="Bruksanvisning">
-                            <AssignmentRounded fontSize="large"/>
-                        </StyledIconButton>
-                    </MenuItem>
-                    <MenuItem to={'/brukermanual/'}>
-                        <StyledIconButton aria-label="Bruker manual">
-                            <PhotoLibraryRounded fontSize="large"/>
-                        </StyledIconButton></MenuItem>
-                </Menu>
-            </NavbarContainer>
-        </>
+        <NavbarContainer>
+            <LogoContainer exact to={'/'}>
+                <Logo/>
+            </LogoContainer>
+            <Menu>
+                <MenuItem to={'/brukermanual/'}>
+                    <StyledIconButton aria-label="Bruksanvisning">
+                        <AssignmentRounded fontSize="large"/>
+                    </StyledIconButton>
+                </MenuItem>
+                <MenuItem to={'/bildegalleri/'}>
+                    <StyledIconButton aria-label="Bruker manual">
+                        <PhotoLibraryRounded fontSize="large"/>
+                    </StyledIconButton></MenuItem>
+            </Menu>
+        </NavbarContainer>
     );
 };
 
@@ -41,11 +39,12 @@ const NavbarContainer = styled.div`
   background-color: ${colors.navbarBackground};
   display: flex;
   z-index: 2;
-  padding: 0 1.5rem;
 `;
 
-const LogoContainer = styled(Link)`
+const LogoContainer = styled(NavLink)`
     margin: 1.5rem 1rem;
+    position: absolute;
+    left: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,14 +60,28 @@ const Menu = styled.nav`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  padding-bottom: 1rem;
 `;
 
-const MenuItem = styled(Link)`
+const MenuItem = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  use {
-    fill: ${colors.iconSecondary};
+  position: relative;
+
+  &.active {
+    svg > path{
+      fill: ${colors.iconCore};
+    }
+    &::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        background-color: ${colors.iconCore};
+        position: absolute;
+        bottom: 0;
+        border-radius: 2rem;
+     }
   }
 `;
