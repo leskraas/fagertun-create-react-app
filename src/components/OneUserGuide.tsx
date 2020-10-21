@@ -54,7 +54,7 @@ export const OneUserGuide: React.FC = () => {
             .then((data) => setUserGuideData(data))
             .catch(console.error);
 
-    }, []);
+    }, [slug]);
 
     // const {imageHeight, imageWidth} = imageSize;
 
