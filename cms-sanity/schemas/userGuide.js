@@ -1,0 +1,40 @@
+export default {
+    name: 'userGuide',
+    title: 'Brukermanual',
+    type: 'document',
+    fields: [
+        {
+            name: 'title',
+            title: 'Tittel',
+            type: 'string'
+        },
+        {
+            name: 'slug',
+            title: 'URL',
+            type: 'slug',
+            options: {
+                source: 'title',
+                maxLength: 96
+            }
+        },
+        {
+            name: 'description',
+            title: 'Kort beskrivelse',
+            type: 'text'
+        },
+        {
+            name: 'mainImage',
+            title: 'Hoved bilde',
+            type: 'image',
+            options: {
+                hotspot: true
+            }
+        },
+        {
+            title: 'Steg i brukermanualen',
+            name: 'userGuideSteps',
+            type: 'array',
+            of: [{type: 'userGuideStep'}]
+        },
+    ],
+}
