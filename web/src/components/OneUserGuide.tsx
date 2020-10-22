@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import Loader from 'react-loader-spinner'
 import sanityClient from "../client";
 import {useParams} from 'react-router-dom';
 import {IUserGuide, UserGuideStep} from "../types/userGuide";

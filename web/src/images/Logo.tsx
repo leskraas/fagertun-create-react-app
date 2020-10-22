@@ -1,5 +1,4 @@
 import React from "react";
-import {colors} from "../utils/colors";
 
 
 export const Logo = () => (
@@ -221,7 +220,7 @@ export const Logo = () => (
                 </g>
             </g>
             <g>
-                <use xlinkHref="#dmJBNsUK" opacity={1} fill="#000000" fillOpacity={0} />
+                <use xlinkHref="#dmJBNsUK" opacity={1} fill="#000000" fillOpacity={0}/>
                 <g>
                     <use
                         xlinkHref="#dmJBNsUK"
