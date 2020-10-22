@@ -65,7 +65,7 @@ export const OneUserGuide: React.FC = () => {
 
     return (
         <>
-            <Typography gutterBottom variant="h2" component="h1">
+            <Typography gutterBottom variant="h3" component="h1">
                 {userGuideData.title}
             </Typography>
             {userGuideData.mainImage &&
