@@ -2,7 +2,6 @@
 
 
 export const colorDefinitions = {
-    linearGradeBlue: 'linear-gradient(#3EB9DE, #3A80DE)',
     shadowBlue: 'rgba(74,116,161,0.29)',
     grey900Transparent: 'rgba(34,34,34, .2)',
 
@@ -52,16 +51,23 @@ export const colorDefinitions = {
     // blue600: '#0082d9',
 
     // Blue
-    blue300: '#0079BF',
+    blue100: '#0088ff',
+    blue200: '#006ed4',
+    blue300: '#0059b0',
+    blue400: '#004488',
+    blue500: '#002041',
     bluegreen: '#61BD4F',
 
 };
 
 export const colorAliases = {
+    core: colorDefinitions.blue300,
+    secondary: colorDefinitions.grey700,
     lightGrey: colorDefinitions.grey200,
     coreGray: colorDefinitions.grey300,
     iconCore: colorDefinitions.blue300,
     shadowCore: colorDefinitions.grey900Transparent,
+    linearGradeBlue: `linear-gradient(${colorDefinitions.blue200}, ${colorDefinitions.blue400})`,
     navbarBackground: '#fff',
     iconSecondary: colorDefinitions.grey700,
     darkGrey: colorDefinitions.grey400,

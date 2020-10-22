@@ -13,10 +13,10 @@ let theme = createMuiTheme(
     {
         palette: {
             primary: {
-                main: colors.blue300,
+                main: colors.core,
             },
             secondary: {
-                main: colors.iconSecondary,
+                main: colors.secondary,
             },
         },
         typography: {

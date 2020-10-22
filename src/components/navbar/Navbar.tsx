@@ -6,14 +6,17 @@ import {colors} from "../../utils/colors";
 import {Logo} from "../../images/Logo";
 import {IconButton} from "@material-ui/core";
 import {AssignmentRounded, PhotoLibraryRounded} from "@material-ui/icons";
+import {useApplePwaDetection} from "../../utils/ApplePWADetection";
 
 export const Navbar: React.FC = () => {
+    const isApplePwa  = useApplePwaDetection()
+
     return (
         <NavbarContainer>
             <LogoContainer exact to={'/'}>
                 <Logo/>
             </LogoContainer>
-            <Menu>
+            <Menu isApplePwa={isApplePwa}>
                 <MenuItem to={'/brukermanual/'}>
                     <StyledIconButton aria-label="Bruksanvisning">
                         <AssignmentRounded style={{fontSize: '30px'}} />
@@ -55,13 +58,17 @@ const StyledIconButton = styled(IconButton)`
     };
 `;
 
-const Menu = styled.nav`
+interface MenuProps {
+    isApplePwa: boolean
+}
+
+const Menu = styled.nav<MenuProps>`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding-bottom: 1rem;
+  padding-bottom: ${props => props.isApplePwa ? '1.5rem' : '1rem'};
 `;
 
 const MenuItem = styled(NavLink)`
