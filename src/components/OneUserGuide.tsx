@@ -45,7 +45,7 @@ export const OneUserGuide: React.FC = () => {
             userGuideSteps[]{
                 step,
                 image{
-                    assets->{
+                    asset->{
                         _id,
                         url
                     }
@@ -71,8 +71,7 @@ export const OneUserGuide: React.FC = () => {
             {userGuideData.mainImage &&
             <ImageWrapper>
                 <Image src={urlFor(userGuideData.mainImage).fit('min')
-                    // .quality(60)
-                    .height(300)
+                    .quality(70)
                     .url()} alt={'hei'}/>
             </ImageWrapper>
             }
@@ -81,7 +80,16 @@ export const OneUserGuide: React.FC = () => {
                     userGuideData.userGuideSteps &&
                     userGuideData.userGuideSteps.length > 0 &&
                     userGuideData.userGuideSteps.map((step: UserGuideStep, index: number) => {
-                            return <li key={`user-guide-step-${index}`}>{step.step}</li>
+                            return (
+                                <li key={`user-guide-step-${index}`}>
+                                    <Typography component="p">
+                                        {step.step}
+                                    </Typography>
+                                    {step.image && <StepImage src={urlFor(step.image).fit('min')
+                                        .width(400).height(250)
+                                        .url()} alt={'hei'}/>}
+                                </li>
+                            );
                         }
                     )
                 }
@@ -102,20 +110,32 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
+const StepImage = styled.img`
+  width: 100%;
+  max-height: 250px;
+  max-width: 400px;
+  object-fit: cover;
+  margin-top: 2rem;
+  border-radius: .5em;
+`;
+
 const GuideSteps = styled.ol`
-  position: absolute;
   list-style: none;
+  padding-bottom: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
   
   li {
         background: ${colors.iconCore};
         color: #fff;
         counter-increment: myCounter;
-        margin: 0 0 3rem 0;
+        margin: 0 0 1.5em 0;
         padding: 1rem 1rem 1rem 3rem;
         position: relative;
         top: 1em;
+        font-size: 1.6rem;
         border-radius: 1em;
-        box-shadow: 5px 5px 10px 0 ${colors.grey900Transparent};
+        box-shadow: 5px 5px 10px 0 ${colors.shadowCore};
   }
   li:before{
         content: counter(myCounter, decimal-leading-zero);
@@ -133,7 +153,7 @@ const GuideSteps = styled.ol`
         top: 0;
         left: -40px;
         border-radius: 50%;
-        box-shadow: 5px 5px 10px 0 ${colors.grey900Transparent};
+        box-shadow: 5px 5px 10px 0 ${colors.shadowCore};
     }
      li:nth-child(even){
         background-color: ${colors.iconSecondary};

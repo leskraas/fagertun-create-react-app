@@ -31,7 +31,7 @@ export const Navbar: React.FC = () => {
 
 const NavbarContainer = styled.div`
   height: ${NavHeight};
-  box-shadow: 0 0 10px 2px ${colors.coreGray} ;
+  box-shadow: 0 0 10px 2px ${colors.shadowCore} ;
   width: 100vw;
   position: fixed;
   bottom: 0;

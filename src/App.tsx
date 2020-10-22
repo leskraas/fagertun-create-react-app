@@ -5,7 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {AllUserGuide} from "./components/AllUserGuide";
 import {OneUserGuide} from "./components/OneUserGuide";
 import {MainMargin, NavHeight} from "./utils/dimentions";
-import {createMuiTheme, responsiveFontSizes, ThemeProvider} from "@material-ui/core";
+import {createMuiTheme, ThemeProvider} from "@material-ui/core";
 import {colors} from "./utils/colors";
 import {ImageGallery} from "./components/ImageGallery";
 
@@ -21,15 +21,18 @@ let theme = createMuiTheme(
         },
         typography: {
             htmlFontSize: 10,
+            fontSize: 14,
+
         },
     }
 );
-theme = responsiveFontSizes(theme);
+
+// theme = responsiveFontSizes(theme);
 
 function App() {
     return (
         <BrowserRouter>
-                <Navbar/>
+            <Navbar/>
             <ThemeProvider theme={theme}>
                 <Content>
                     <Route path={'/'} exact component={() => <div>hei</div>}/>
@@ -46,7 +49,7 @@ const Content = styled.div`
   position: relative;
   top: 0;
   margin: ${MainMargin} ${MainMargin} calc(${MainMargin} + ${NavHeight});
-  min-height: calc(100vh - ${NavHeight});
+  min-height: calc(100vh - ${NavHeight} - 2*${MainMargin});
 `
 
 const Navbar = styled(NavbarComp)`

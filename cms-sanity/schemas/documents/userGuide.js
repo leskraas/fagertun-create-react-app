@@ -1,7 +1,10 @@
+import { MdFormatListBulleted } from 'react-icons/md';
+
 export default {
     name: 'userGuide',
     title: 'Brukermanual',
     type: 'document',
+    icon: MdFormatListBulleted,
     fields: [
         {
             name: 'title',

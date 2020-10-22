@@ -5,7 +5,7 @@ export interface Slug {
 
 export interface UserGuideStep {
     step: string,
-    image: string,
+    image: Image,
 }
 
 export interface Image {

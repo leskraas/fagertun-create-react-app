@@ -35,7 +35,7 @@ export const Card = (props: IProps) => {
                     src={props.image}
                 />
                 <CardContent >
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h4" component="h2">
                         {props.title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
@@ -54,6 +54,5 @@ export const Card = (props: IProps) => {
 
 
 const StyledCard = styled(MaterialCard)`
-  //max-width: 345px;
   width: 250px;
 `;
