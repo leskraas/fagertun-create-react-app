@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Loader from 'react-loader-spinner'
 import sanityClient from "../client";
 import {useParams} from 'react-router-dom';
 import {IUserGuide, UserGuideStep} from "../types/userGuide";
@@ -58,26 +59,21 @@ export const OneUserGuide: React.FC = () => {
             .catch(console.error);
 
     }, [slug]);
-
-    // const {imageHeight, imageWidth} = imageSize;
-
-    if (!userGuideData) return <div>loading</div>
-
     return (
         <>
-            <Typography gutterBottom variant="h3" component="h1">
-                {userGuideData.title}
+            <Typography gutterBottom variant="h1" component="h1">
+                {userGuideData?.title}
             </Typography>
-            {userGuideData.mainImage &&
+            {userGuideData?.mainImage &&
             <ImageWrapper>
                 <Image src={urlFor(userGuideData.mainImage).fit('min')
                     .quality(70)
-                    .url()} alt={'hei'}/>
+                    .url()}/>
             </ImageWrapper>
             }
             <GuideSteps>
                 {
-                    userGuideData.userGuideSteps &&
+                    userGuideData?.userGuideSteps &&
                     userGuideData.userGuideSteps.length > 0 &&
                     userGuideData.userGuideSteps.map((step: UserGuideStep, index: number) => {
                             return (
@@ -140,9 +136,9 @@ const GuideSteps = styled.ol`
   li:before{
         content: counter(myCounter, decimal-leading-zero);
         text-align: center;
-        font-size: 3rem;
-        height: 4rem;
-        width: 4rem;
+        font-size: 2.5rem;
+        height: 3rem;
+        width: 3rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -151,7 +147,7 @@ const GuideSteps = styled.ol`
         font-weight: bold;
         position: absolute; 
         top: 0;
-        left: -40px;
+        left: -3rem;
         border-radius: 50%;
         box-shadow: 5px 5px 10px 0 ${colors.shadowCore};
     }

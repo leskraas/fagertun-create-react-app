@@ -1,15 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import {NavLink} from "react-router-dom";
-import {NavHeight} from "../../utils/dimentions";
-import {colors} from "../../utils/colors";
-import {Logo} from "../../images/Logo";
+import {NavHeight} from "../utils/dimentions";
+import {colors} from "../utils/colors";
+import {Logo} from "../images/Logo";
 import {IconButton} from "@material-ui/core";
 import {AssignmentRounded, PhotoLibraryRounded} from "@material-ui/icons";
-import {useApplePwaDetection} from "../../utils/ApplePWADetection";
+import {useApplePwaDetection} from "../utils/ApplePWADetection";
 
 export const Navbar: React.FC = () => {
-    const isApplePwa  = useApplePwaDetection()
+    const isApplePwa = useApplePwaDetection()
 
     return (
         <NavbarContainer>
@@ -19,12 +19,12 @@ export const Navbar: React.FC = () => {
             <Menu isApplePwa={isApplePwa}>
                 <MenuItem to={'/brukermanual/'}>
                     <StyledIconButton aria-label="Bruksanvisning">
-                        <AssignmentRounded style={{fontSize: '30px'}} />
+                        <StyledAssignmentRounded/>
                     </StyledIconButton>
                 </MenuItem>
                 <MenuItem to={'/bildegalleri/'}>
                     <StyledIconButton aria-label="Bruker manual">
-                        <PhotoLibraryRounded style={{fontSize: '30px'}}/>
+                        <StyledPhotoLibraryRounded/>
                     </StyledIconButton></MenuItem>
             </Menu>
         </NavbarContainer>
@@ -79,16 +79,33 @@ const MenuItem = styled(NavLink)`
 
   &.active {
     svg > path{
-      fill: ${colors.iconCore};
+      //fill: ${colors.iconCore};
     }
     &::after {
         content: '';
         height: 2px;
         width: 100%;
-        background-color: ${colors.iconCore};
+        background-color: ${colors.blue400};
         position: absolute;
         bottom: 0;
         border-radius: 2rem;
      }
   }
+`;
+
+const CommonIconStyle = css`
+   && {
+        font-size: 30px;
+       ${MenuItem}.active & {
+        color: ${colors.iconCore};
+       } 
+     }
+`;
+
+const StyledPhotoLibraryRounded = styled(PhotoLibraryRounded)`
+    ${CommonIconStyle}
+`;
+
+const StyledAssignmentRounded = styled(AssignmentRounded)`
+    ${CommonIconStyle}
 `;
