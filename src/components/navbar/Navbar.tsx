@@ -16,12 +16,12 @@ export const Navbar: React.FC = () => {
             <Menu>
                 <MenuItem to={'/brukermanual/'}>
                     <StyledIconButton aria-label="Bruksanvisning">
-                        <AssignmentRounded fontSize="large"/>
+                        <AssignmentRounded style={{fontSize: '26px'}} />
                     </StyledIconButton>
                 </MenuItem>
                 <MenuItem to={'/bildegalleri/'}>
                     <StyledIconButton aria-label="Bruker manual">
-                        <PhotoLibraryRounded fontSize="large"/>
+                        <PhotoLibraryRounded style={{fontSize: '26px'}}/>
                     </StyledIconButton></MenuItem>
             </Menu>
         </NavbarContainer>
