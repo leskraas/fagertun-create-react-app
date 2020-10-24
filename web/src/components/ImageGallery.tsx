@@ -55,7 +55,7 @@ export const ImageGallery: React.FC = () => {
         if (image !== "" && image !== prevImage) {
             sanityFileUpload(image)
         }
-    }, [image, uploaded])
+    }, [image, prevImage, uploaded])
 
     const sanityFileUpload = (file: any) => {
         sanityClient.assets.upload('image', file, {
