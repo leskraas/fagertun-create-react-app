@@ -1,13 +1,14 @@
 import React from 'react';
 import {Navbar as NavbarComp} from "./components/Navbar";
 import styled from "styled-components";
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {AllUserGuide} from "./components/AllUserGuide";
 import {OneUserGuide} from "./components/OneUserGuide";
 import {MainMargin, NavHeight} from "./utils/dimentions";
 import {createMuiTheme, ThemeProvider} from "@material-ui/core";
 import {colors} from "./utils/colors";
 import {ImageGallery} from "./components/ImageGallery";
+import {Page} from "./components/Page";
 
 const defaultTheme = createMuiTheme({
     palette: {
@@ -24,7 +25,7 @@ const defaultTheme = createMuiTheme({
 
     },
 })
-const { breakpoints  } = defaultTheme
+const {breakpoints} = defaultTheme
 const theme = {
     ...defaultTheme,
     overrides: {
@@ -77,10 +78,12 @@ function App() {
             <Navbar/>
             <ThemeProvider theme={theme}>
                 <Content>
-                    <Route path={'/'} exact component={() => <div>hei</div>}/>
-                    <Route path={'/brukermanual/'} exact component={AllUserGuide}/>
-                    <Route path={'/brukermanual/:slug'} component={OneUserGuide}/>
-                    <Route path={'/bildegalleri/'} component={ImageGallery}/>
+                    <Switch>
+                        <Route path={'/brukermanual/'} exact component={AllUserGuide}/>
+                        <Route path={'/brukermanual/:slug'} component={OneUserGuide}/>
+                        <Route path={'/bildegalleri/'} component={ImageGallery}/>
+                        <Route component={Page}/>
+                    </Switch>
                 </Content>
             </ThemeProvider>
         </BrowserRouter>

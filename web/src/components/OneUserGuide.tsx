@@ -1,35 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import sanityClient from "../client";
 import {useParams} from 'react-router-dom';
-import {IUserGuide, UserGuideStep} from "../types/userGuide";
+import {IUserGuide, UserGuideStep} from "../types/sanity";
 import {urlFor} from "../utils/imageUrlBuilder";
 import styled from "styled-components";
 import {Typography} from "@material-ui/core";
 import {MainMargin} from "../utils/dimentions";
 import {colors} from "../utils/colors";
 
-interface ImageSize {
-    imageHeight: number | undefined;
-    imageWidth: number | undefined;
-}
-
 export const OneUserGuide: React.FC = () => {
     const [userGuideData, setUserGuideData] = useState<IUserGuide>();
-    // const [imageSize, setImageSize] = useState<ImageSize>({imageHeight: undefined, imageWidth: undefined});
-    // const imageRef = useRef<HTMLDivElement>(null);
-
     const {slug} = useParams();
-
-    // useEffect(() => {
-    //     console.log('imageRef', imageRef.current);
-    //     if (imageRef.current) {
-    //         const {offsetHeight, offsetWidth} = imageRef.current;
-    //         setImageSize({
-    //             imageWidth: offsetWidth > 0 ? offsetWidth : 375,
-    //             imageHeight: offsetHeight > 0 ? offsetHeight : 400
-    //         });
-    //     }
-    // }, [imageRef]);
 
     useEffect(() => {
         sanityClient.fetch(

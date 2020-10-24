@@ -69,6 +69,7 @@ const Menu = styled.nav<MenuProps>`
   align-items: center;
   width: 100%;
   padding-bottom: ${props => props.isApplePwa ? '1.5rem' : '1rem'};
+
 `;
 
 const MenuItem = styled(NavLink)`
@@ -76,11 +77,11 @@ const MenuItem = styled(NavLink)`
   justify-content: center;
   align-items: center;
   position: relative;
+  :not(:first-of-type) {
+    margin-left: 1em;
+  }
 
   &.active {
-    svg > path{
-      //fill: ${colors.iconCore};
-    }
     &::after {
         content: '';
         height: 2px;

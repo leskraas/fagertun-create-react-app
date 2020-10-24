@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import sanityClient from "../client";
-import {IUserGuide} from "../types/userGuide";
+import {IUserGuide} from "../types/sanity";
 import {Card} from "./Card";
 import {urlFor} from "../utils/imageUrlBuilder";
 import {Grid, Typography} from '@material-ui/core';

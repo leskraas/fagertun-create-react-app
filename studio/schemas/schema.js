@@ -3,6 +3,7 @@ import createSchema from 'part:@sanity/base/schema-creator'
 
 // Then import schema types from any plugins that might expose them
 import schemaTypes from 'all:part:@sanity/base/schema-type'
+import imageGallery from './documents/imageGallery';
 
 // We import object and document schemas
 import page from './documents/page';
@@ -26,6 +27,7 @@ export default createSchema({
     // in the studio.
     userGuide,
     page,
+    imageGallery,
     siteConfig,
     route,
     // When added to this list, object types can be used as

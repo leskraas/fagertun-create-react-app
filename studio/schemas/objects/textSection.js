@@ -13,6 +13,14 @@ export default {
       type: 'portableText',
       title: 'Text',
     },
+    {
+      title: 'Bilde',
+      name: 'image',
+      type: 'image',
+      options: {
+        hotspot: true
+      }
+    }
   ],
   preview: {
     select: {

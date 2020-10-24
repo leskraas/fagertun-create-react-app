@@ -6,6 +6,12 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@sanity/block-content-to-react": [
+        "src/types/blockContent.d.ts"
+      ]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,6 +26,9 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src",
+    "./node_modules/@sanity/base/types/**/*.ts",
+    "./**/*.ts",
+    "./**/*.tsx"
   ]
 }

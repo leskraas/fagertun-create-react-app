@@ -25,7 +25,7 @@ export default {
     prepare({ title, media }) {
       return {
         title,
-        subtitle: 'Hero section',
+        subtitle: 'IHero section',
         media,
       };
     },
