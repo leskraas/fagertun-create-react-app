@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import sanityClient from "../client";
 import {useParams} from 'react-router-dom';
 import {IUserGuide, UserGuideStep} from "../types/sanity";
-import {urlFor} from "../utils/imageUrlBuilder";
 import styled from "styled-components";
 import {Typography} from "@material-ui/core";
 import {MainMargin} from "../utils/dimentions";
 import {colors} from "../utils/colors";
+import {SanityImage} from "../utils/SanityImage";
 
 export const OneUserGuide: React.FC = () => {
     const [userGuideData, setUserGuideData] = useState<IUserGuide>();
@@ -46,9 +46,7 @@ export const OneUserGuide: React.FC = () => {
             </Typography>
             {userGuideData?.mainImage &&
             <ImageWrapper>
-                <Image src={urlFor(userGuideData.mainImage).fit('min')
-                    .quality(70)
-                    .url()}/>
+                <SanityImage image={userGuideData.mainImage} quality={100}/>
             </ImageWrapper>
             }
             <GuideSteps>
@@ -61,9 +59,7 @@ export const OneUserGuide: React.FC = () => {
                                     <Typography component="p">
                                         {step.step}
                                     </Typography>
-                                    {step.image && <StepImage src={urlFor(step.image).fit('min')
-                                        .width(400).height(250)
-                                        .url()} alt={'hei'}/>}
+                                    {step.image && <StepImage image={step.image} width={300} height={300}/>}
                                 </li>
                             );
                         }
@@ -80,13 +76,7 @@ const ImageWrapper = styled.div`
   margin: 0 -${MainMargin};
 `;
 
-const Image = styled.img`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-`;
-
-const StepImage = styled.img`
+const StepImage = styled(SanityImage)`
   width: 100%;
   max-height: 250px;
   max-width: 400px;

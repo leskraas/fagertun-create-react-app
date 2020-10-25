@@ -24,7 +24,6 @@ export const Card = (props: IProps) => {
     const handleClick = () => {
         history.push(props.slug);
     }
-    console.log('props', props)
     return (
         <StyledCard>
             <CardActionArea onClick={handleClick}>

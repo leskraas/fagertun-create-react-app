@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {CircularProgress, IconButton, Typography} from "@material-ui/core";
 import styled from "styled-components";
 import {AddAPhotoRounded} from "@material-ui/icons";
@@ -7,18 +7,10 @@ import {colors} from "../utils/colors";
 import {MainMargin, NavHeight} from "../utils/dimentions";
 import groq from "groq";
 import {IImage} from "../types/sanity";
-import {urlFor} from "../utils/imageUrlBuilder";
 import {nanoid} from "nanoid";
+import {usePrevious} from "../utils/hooks/usePrevious";
+import {SanityImage} from "../utils/SanityImage";
 
-
-const usePrevious = (value: any) => {
-    const ref = useRef();
-
-    useEffect(() => {
-        ref.current = value;
-    }, [value]);
-    return ref.current;
-}
 
 const imageGalleryQuery = groq`
     *[_type == "image-gallery"][0]{
@@ -108,7 +100,9 @@ export const ImageGallery: React.FC = () => {
             <ImageWrapper>
                 {imageGallery &&
                 imageGallery.map((image) => (
-                    <Image key={image._key} src={urlFor(image).fit('min').height(500).quality(80).url()}/>
+                    <Image key={image._key}>
+                        <SanityImage image={image}/>
+                    </Image>
                 ))
                 }
             </ImageWrapper>
@@ -173,11 +167,12 @@ const ImageWrapper = styled.div`
 `;
 
 
-const Image = styled.img`
-  flex: 1 1 100px;
-  min-height: 100px;
-  max-width: 50%;
-  width: 100%;
-  object-fit: cover;
-
+const Image = styled.div`
+  && {
+      flex: 1 1 100px;
+      min-height: 100px;
+      max-width: 50%;
+      width: 100%;
+      object-fit: cover;
+  }
 `;

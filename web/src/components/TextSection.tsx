@@ -4,7 +4,6 @@ import {SimpleBlockContent} from "./SimpleBlockContent";
 import {Typography} from "@material-ui/core";
 
 export const TextSection: React.FC<ITextSection> = (content) => {
-    console.log('contnet', content);
     return (
         <div>
             <Typography variant={'h2'}>{content.heading}</Typography>

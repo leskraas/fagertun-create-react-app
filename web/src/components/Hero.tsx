@@ -1,18 +1,16 @@
 import React from 'react';
 import {IHero} from "../types/sanity";
 import {Typography} from "@material-ui/core";
-import {urlFor} from "../utils/imageUrlBuilder";
 import styled from "styled-components";
 import {MainMargin} from "../utils/dimentions";
+import {SanityImage} from "../utils/SanityImage";
 
 export const Hero: React.FC<IHero> = (content) => {
     return (
         <HeroWrapper>
             <StyledTypography variant="h1">{content.heading}</StyledTypography>
             <ImageWrapper>
-                <Image src={urlFor(content.backgroundImage).fit('min')
-                    .quality(70)
-                    .url()}/>
+                <Image image={content.backgroundImage}/>
             </ImageWrapper>
         </HeroWrapper>
     );
@@ -47,7 +45,7 @@ const ImageWrapper = styled.div`
   }
 `;
 
-const Image = styled.img`
+const Image = styled(SanityImage)`
   height: 100%;
   width: 100%;
   object-fit: cover;
