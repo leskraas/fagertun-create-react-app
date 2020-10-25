@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {lazy, Suspense} from 'react';
 import {IHero} from "../types/sanity";
 import {Typography} from "@material-ui/core";
 import styled from "styled-components";
 import {MainMargin} from "../utils/dimentions";
-import {SanityImage} from "../utils/SanityImage";
+
+const SanityImage = lazy(() => import("../utils/SanityImage").then(({SanityImage}) => ({default: SanityImage})));
+
 
 export const Hero: React.FC<IHero> = (content) => {
     return (
         <HeroWrapper>
             <StyledTypography variant="h1">{content.heading}</StyledTypography>
             <ImageWrapper>
-                <Image image={content.backgroundImage}/>
+                <Suspense fallback={''}>
+                    <SanityImage image={content.backgroundImage} height={300} width={400}/>
+                </Suspense>
             </ImageWrapper>
         </HeroWrapper>
     );
@@ -43,11 +47,4 @@ const ImageWrapper = styled.div`
     top:0; left:0;
     background:rgba(0,0,0,0.6);
   }
-`;
-
-const Image = styled(SanityImage)`
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-
 `;

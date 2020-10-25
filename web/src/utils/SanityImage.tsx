@@ -19,27 +19,29 @@ export const SanityImage: React.FC<IProps> = (props) => {
     return (
         isMobile ? (
                 props.height ?
-                    <Image src={urlFor(props.image).fit('min')
+                    <Image height={props.height} width={props.width} src={urlFor(props.image).fit('min')
                         .quality(props.quality ?? 60)
                         .width(props.width ?? 300)
                         .height(props.height)
                         .url()}/> :
-                    <Image src={urlFor(props.image).fit('min')
+                    <Image height={props.height} width={props.width}  src={urlFor(props.image).fit('min')
                         .quality(props.quality ?? 60)
                         .width(props.width ?? 300)
                         .url()}/>)
             :
-            <Image src={urlFor(props.image).fit('min')
+            <Image height={props.height} width={props.width}  src={urlFor(props.image).fit('min')
                 .quality(props.quality ?? 90)
                 .width(1400)
                 .url()}/>
     );
 };
+interface ImageProps{
+    height?: number;
+    width?: number;
+}
 
-const Image = styled.img
-    `
-  height: 100%;
+const Image = styled.img<ImageProps>`
+  height: ${props => props.height ? props.height + 'px' : '100%'};
   width: 100%;
   object-fit: cover;
-
 `;
